@@ -1,0 +1,83 @@
+<?php
+
+namespace Rusty\NewsBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Rusty\NewsBundle\Entity\Tag
+ */
+class Tag
+{
+    /**
+     * @var integer $id
+     */
+    private $id;
+
+    /**
+     * @var string $tag
+     */
+    private $tag;
+
+    /**
+     * @var boolean $enabled
+     */
+    private $enabled;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set tag
+     *
+     * @param string $tag
+     */
+    public function setTag($tag)
+    {
+        $this->tag = $tag;
+    }
+
+    /**
+     * Get tag
+     *
+     * @return string 
+     */
+    public function getTag()
+    {
+        return $this->tag;
+    }
+
+    /**
+     * @var boolean $is_active
+     */
+    private $is_active;
+
+
+    /**
+     * Set is_active
+     *
+     * @param boolean $isActive
+     */
+    public function setIsActive($isActive)
+    {
+        $this->is_active = $isActive;
+    }
+
+    /**
+     * Get is_active
+     *
+     * @return boolean 
+     */
+    public function getIsActive()
+    {
+        return $this->is_active;
+    }
+}
