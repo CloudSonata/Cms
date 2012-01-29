@@ -3,7 +3,14 @@
 <container xmlns="http://symfony.com/schema/dic/services"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
-
+    <services>
+        <service id="sonata.admin.post" class="Rusty\NewsBundle\Admin\PostAdmin">
+            <tag name="sonata.admin" manager_type="orm" group="Blog" label="Blog"/>
+            <argument />
+            <argument>Rusy\NewsBundle\Entity\Post</argument>
+            <argument>SonataAdminBundle:CRUD</argument>
+        </service>
+    </services>
     <!--
     <parameters>
         <parameter key="rusty_news.example.class">Rusty\NewsBundle\Example</parameter>
@@ -18,3 +25,5 @@
     </services>
     -->
 </container>
+
+

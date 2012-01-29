@@ -6,8 +6,12 @@
       <generator strategy="AUTO"/>
     </id>
     <field name="name" type="string" column="name" length="255"/>
+    <field name="updated_at" type="datetime" column="updated_at"/>
     <field name="created_at" type="datetime" column="created_at"/>
     <field name="enabled" type="boolean" column="enabled"/>
-    <lifecycle-callbacks/>
+    <lifecycle-callbacks>
+        <lifecycle-callback type="prePersist" method="prePersist"/>
+        <lifecycle-callback type="preUpdate" method="preUpdate"/>
+    </lifecycle-callbacks>
   </entity>
 </doctrine-mapping>

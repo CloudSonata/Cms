@@ -20,6 +20,11 @@ class Post
     private $title;
 
     /**
+     * @var text $abstract
+     */
+    private $abstract;
+
+    /**
      * @var text $content
      */
     private $content;
@@ -39,7 +44,22 @@ class Post
      */
     private $enabled;
 
+    public function prePersist()
+    {
+        $this->setCreatedAt(new \DateTime);
+        $this->setPublishedAt(new \DateTime);
+        $this->setUpdatedAt(new \DateTime);
+    }
 
+    public function preUpdate()
+    {
+        $this->setUpdatedAt(new \DateTime);
+    }
+    
+    public function __toString()
+    {
+        return $this->title;
+    }
     /**
      * Get id
      *
@@ -68,6 +88,26 @@ class Post
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * Set abstract
+     *
+     * @param text $abstract
+     */
+    public function setAbstract($abstract)
+    {
+        $this->abstract = $abstract;
+    }
+
+    /**
+     * Get abstract
+     *
+     * @return text 
+     */
+    public function getAbstract()
+    {
+        return $this->abstract;
     }
 
     /**
@@ -131,28 +171,47 @@ class Post
     }
 
     /**
-     * @var boolean $is_active
-     */
-    private $is_active;
-
-
-    /**
-     * Set is_active
+     * Set enabled
      *
-     * @param boolean $isActive
+     * @param boolean $enabled
      */
-    public function setIsActive($isActive)
+    public function setEnabled($enabled)
     {
-        $this->is_active = $isActive;
+        $this->enabled = $enabled;
     }
 
     /**
-     * Get is_active
+     * Get enabled
      *
      * @return boolean 
      */
-    public function getIsActive()
+    public function getEnabled()
     {
-        return $this->is_active;
+        return $this->enabled;
+    }
+    /**
+     * @var Rusty\NewsBundle\Entity\Category
+     */
+    private $category;
+
+
+    /**
+     * Set category
+     *
+     * @param Rusty\NewsBundle\Entity\Category $category
+     */
+    public function setCategory(\Rusty\NewsBundle\Entity\Category $category)
+    {
+        $this->category = $category;
+    }
+
+    /**
+     * Get category
+     *
+     * @return Rusty\NewsBundle\Entity\Category 
+     */
+    public function getCategory()
+    {
+        return $this->category;
     }
 }

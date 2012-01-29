@@ -15,9 +15,9 @@ class Tag
     private $id;
 
     /**
-     * @var string $tag
+     * @var string $name
      */
-    private $tag;
+    private $name;
 
     /**
      * @var boolean $enabled
@@ -36,48 +36,96 @@ class Tag
     }
 
     /**
-     * Set tag
+     * Set name
      *
-     * @param string $tag
+     * @param string $name
      */
-    public function setTag($tag)
+    public function setName($name)
     {
-        $this->tag = $tag;
+        $this->name = $name;
     }
 
     /**
-     * Get tag
+     * Get name
      *
      * @return string 
      */
-    public function getTag()
+    public function getName()
     {
-        return $this->tag;
+        return $this->name;
     }
 
     /**
-     * @var boolean $is_active
-     */
-    private $is_active;
-
-
-    /**
-     * Set is_active
+     * Set enabled
      *
-     * @param boolean $isActive
+     * @param boolean $enabled
      */
-    public function setIsActive($isActive)
+    public function setEnabled($enabled)
     {
-        $this->is_active = $isActive;
+        $this->enabled = $enabled;
     }
 
     /**
-     * Get is_active
+     * Get enabled
      *
      * @return boolean 
      */
-    public function getIsActive()
+    public function getEnabled()
     {
-        return $this->is_active;
+        return $this->enabled;
+    }
+    /**
+     * @var Rusty\NewsBundle\Entity\Post
+     */
+    private $post;
+
+
+    /**
+     * Set post
+     *
+     * @param Rusty\NewsBundle\Entity\Post $post
+     */
+    public function setPost(\Rusty\NewsBundle\Entity\Post $post)
+    {
+        $this->post = $post;
+    }
+
+    /**
+     * Get post
+     *
+     * @return Rusty\NewsBundle\Entity\Post 
+     */
+    public function getPost()
+    {
+        return $this->post;
+    }
+    /**
+     * @var Rusty\NewsBundle\Entity\Post
+     */
+    private $posts;
+
+    public function __construct()
+    {
+        $this->posts = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add posts
+     *
+     * @param Rusty\NewsBundle\Entity\Post $posts
+     */
+    public function addPost(\Rusty\NewsBundle\Entity\Post $posts)
+    {
+        $this->posts[] = $posts;
+    }
+
+    /**
+     * Get posts
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getPosts()
+    {
+        return $this->posts;
     }
 }

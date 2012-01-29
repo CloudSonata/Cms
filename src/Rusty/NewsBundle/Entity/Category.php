@@ -29,7 +29,21 @@ class Category
      */
     private $enabled;
 
+    public function prePersist()
+    {
+        $this->setCreatedAt(new \DateTime);
+        $this->setUpdatedAt(new \DateTime);
+    }
 
+    public function preUpdate()
+    {
+        $this->setUpdatedAt(new \DateTime);
+    }
+    
+    public function __toString()
+    {
+        return $this->name;
+    }    
     /**
      * Get id
      *
@@ -98,5 +112,30 @@ class Category
     public function getEnabled()
     {
         return $this->enabled;
+    }
+    /**
+     * @var datetime $updated_at
+     */
+    private $updated_at;
+
+
+    /**
+     * Set updated_at
+     *
+     * @param datetime $updatedAt
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updated_at = $updatedAt;
+    }
+
+    /**
+     * Get updated_at
+     *
+     * @return datetime 
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updated_at;
     }
 }

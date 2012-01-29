@@ -10,7 +10,16 @@
     <field name="content" type="text" column="content"/>
     <field name="published_at" type="datetime" column="published_at"/>
     <field name="created_at" type="datetime" column="created_at"/>
+    <field name="updated_at" type="datetime" column="updated_at"/>
     <field name="enabled" type="boolean" column="enabled"/>
-    <lifecycle-callbacks/>
+    <many-to-one field="category" target-entity="Rusty\NewsBundle\Entity\Category" orphan-removal="">
+      <join-columns>
+        <join-column name="category_id" referenced-column-name="id" nullable="1"/>
+      </join-columns>      
+    </many-to-one>    
+    <lifecycle-callbacks>
+        <lifecycle-callback type="prePersist" method="prePersist"/>
+        <lifecycle-callback type="preUpdate" method="preUpdate"/>
+    </lifecycle-callbacks>
   </entity>
 </doctrine-mapping>

@@ -74,4 +74,58 @@ class Tag
     {
         return $this->enabled;
     }
+    /**
+     * @var Rusty\NewsBundle\Entity\Post
+     */
+    private $post;
+
+
+    /**
+     * Set post
+     *
+     * @param Rusty\NewsBundle\Entity\Post $post
+     */
+    public function setPost(\Rusty\NewsBundle\Entity\Post $post)
+    {
+        $this->post = $post;
+    }
+
+    /**
+     * Get post
+     *
+     * @return Rusty\NewsBundle\Entity\Post 
+     */
+    public function getPost()
+    {
+        return $this->post;
+    }
+    /**
+     * @var Rusty\NewsBundle\Entity\Post
+     */
+    private $posts;
+
+    public function __construct()
+    {
+        $this->posts = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add posts
+     *
+     * @param Rusty\NewsBundle\Entity\Post $posts
+     */
+    public function addPost(\Rusty\NewsBundle\Entity\Post $posts)
+    {
+        $this->posts[] = $posts;
+    }
+
+    /**
+     * Get posts
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getPosts()
+    {
+        return $this->posts;
+    }
 }

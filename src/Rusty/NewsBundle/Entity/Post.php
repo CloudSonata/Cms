@@ -44,7 +44,22 @@ class Post
      */
     private $enabled;
 
+    public function prePersist()
+    {
+        $this->setCreatedAt(new \DateTime);
+        $this->setPublishedAt(new \DateTime);
+        $this->setUpdatedAt(new \DateTime);
+    }
 
+    public function preUpdate()
+    {
+        $this->setUpdatedAt(new \DateTime);
+    }
+    
+    public function __toString()
+    {
+        return $this->title;
+    }
     /**
      * Get id
      *
@@ -173,5 +188,55 @@ class Post
     public function getEnabled()
     {
         return $this->enabled;
+    }
+    /**
+     * @var Rusty\NewsBundle\Entity\Category
+     */
+    private $category;
+
+
+    /**
+     * Set category
+     *
+     * @param Rusty\NewsBundle\Entity\Category $category
+     */
+    public function setCategory(\Rusty\NewsBundle\Entity\Category $category)
+    {
+        $this->category = $category;
+    }
+
+    /**
+     * Get category
+     *
+     * @return Rusty\NewsBundle\Entity\Category 
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+    /**
+     * @var datetime $updated_at
+     */
+    private $updated_at;
+
+
+    /**
+     * Set updated_at
+     *
+     * @param datetime $updatedAt
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updated_at = $updatedAt;
+    }
+
+    /**
+     * Get updated_at
+     *
+     * @return datetime 
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updated_at;
     }
 }
